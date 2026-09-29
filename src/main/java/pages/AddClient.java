@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,6 +68,33 @@ public class AddClient {
 
     @FindBy(id = "btn-cancel")
     WebElement btnCancel;
+
+
+    @FindBy(id = "select2-client_language-container")
+    WebElement languageContainer;
+
+    @FindBy(className = "select2-search__field")
+    WebElement searchBox;
+
+    public void setLanguage(String language)
+    {
+        languageContainer.click();
+        searchBox.sendKeys(language);
+        driver.findElement(By.xpath("//li[normalize-space()='"+language+"']")).click();
+    }
+
+
+    @FindBy(id = "select2-client_country-container")
+    WebElement countryContainer;
+
+
+
+    public void setCountry(String country)
+    {
+        countryContainer.click();
+        searchBox.sendKeys(country);
+        driver.findElement(By.xpath("//li[normalize-space()='"+country+"']")).click();
+    }
 
     public AddClient(WebDriver driver)
     {

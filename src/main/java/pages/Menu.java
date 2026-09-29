@@ -16,7 +16,7 @@ public class Menu {
     WebElement lnkDashboard;
 
     // ---------- Clients ----------
-    @FindBy(xpath = "//span[normalize-space()='Clients']")
+    @FindBy(xpath = "//span[text()='Clients']")
     WebElement mnuClients;
 
     @FindBy(linkText = "Add Client")

@@ -9,6 +9,8 @@ import pages.AddClient;
 import pages.Login;
 import pages.Menu;
 
+import java.time.Duration;
+
 public class AddClientTest {
 
     WebDriver driver;
@@ -24,6 +26,7 @@ public class AddClientTest {
         login.setUsername("amolujagare@gmail.com");
         login.setPassword("admin123");
         login.btnLogin();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     @Test
@@ -34,29 +37,34 @@ public class AddClientTest {
 
         AddClient addClient = new AddClient(driver);
 
+
+
+
         addClient.setActive(true);
         addClient.setClientName("Rahul");
         addClient.setClientSurname("Sharma");
-
+        addClient.setLanguage("Spanish");
         addClient.setStreetAddress("12, MG Road");
         addClient.setStreetAddress2("Near City Mall");
         addClient.setCity("Pune");
         addClient.setState("Maharashtra");
         addClient.setZipCode("411001");
-
+        addClient.setCountry("Poland");
         addClient.setPhone("02012345678");
         addClient.setFax("02087654321");
         addClient.setMobile("9876543210");
         addClient.setEmail("rahul.sharma@gmail.com");
         addClient.setWeb("www.rahulsharma.com");
         addClient.setBirthDate("25-Mar-2027");
-
-        // 25-Mar-2027
-
         addClient.setVatId("VAT12345");
         addClient.setTaxCode("TAX6789");
 
-        //addClient.clickSave();
+
+
+
+
+
+        addClient.clickSave();
     }
 
     @AfterClass
