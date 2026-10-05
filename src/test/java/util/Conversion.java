@@ -1,5 +1,8 @@
 package util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -38,4 +41,16 @@ public class Conversion {
 
         return mp.get(countryShort) ;
     }
+
+    /* Expected :15-Aug-1990 - string -> Date // dd-MMM-yyyy
+
+    Date -> String ( my desired format) - yyyy-MM-dd
+Actual   :1990-08-15 - string
+*/
+    public static String convertDate(String dateStr) throws ParseException {
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+
+        return  new SimpleDateFormat("dd-MMM-yyyy").format(date);
+    }
+
 }

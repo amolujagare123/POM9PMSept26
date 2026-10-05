@@ -13,9 +13,11 @@ import pages.Menu;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.time.Duration;
 import java.util.ArrayList;
 
+import static util.Conversion.convertDate;
 import static util.Conversion.getCountry;
 import static util.ForDataProvider.getMyData;
 
@@ -55,7 +57,7 @@ public class AddClientDBTest {
                               String birthDate,
                               String vatId,
                               String taxCode
-                             ) throws ClassNotFoundException, SQLException {
+                             ) throws ClassNotFoundException, SQLException, ParseException {
         ArrayList<String> expected = new ArrayList<>();
         expected.add(clientName);
         expected.add(clientSurname);
@@ -145,7 +147,10 @@ public class AddClientDBTest {
             actual.add(rs.getString("client_mobile"));
             actual.add(rs.getString("client_email"));
             actual.add(rs.getString("client_web"));
-            actual.add(rs.getString("client_birthdate"));
+
+            actual.add(convertDate(rs.getString("client_birthdate")));
+
+
             actual.add(rs.getString("client_vat_id"));
             actual.add(rs.getString("client_tax_code"));
         }
@@ -155,7 +160,7 @@ public class AddClientDBTest {
         System.out.println("Actual="+actual);
 
 
-        // Assert.assertEquals(actual,expected,"incorrect or no error message");
+        Assert.assertEquals(actual,expected,"incorrect or no error message");
     }
 
     @AfterClass
